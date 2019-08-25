@@ -28,20 +28,27 @@ class ViewController: UIViewController {
     }
     
     //-------------------------------------------------------------------
-    @IBAction func changeDate(_
+    @IBAction func changeDate(
         //Function than changes the date depending on the gesture
         //      you neewd two gesture recognizers for each direction
-        sender: UISwipeGestureRecognizer
+        _ sender: UISwipeGestureRecognizer
         ) {
         if (sender.direction == .left) {
-            print("left swipe made")
             dateWeAre = dateWeAre.addingTimeInterval(86400);
             _dateStrToLabels();
-        } else if sender.direction == .right {
-            print("right swipe made")
+        } else if (sender.direction == .right) {
             dateWeAre = dateWeAre.addingTimeInterval(-86400);
             _dateStrToLabels();
         }
+    }
+    
+    //------------------------------------------------------------------
+    @IBAction func goToToday(
+        //Method that returns the date to todays date
+        //      no validators for now
+        _ sender: UIButton) {
+        dateWeAre = Date();
+        _dateStrToLabels();
     }
     
     //------------------------------------------------------------------
