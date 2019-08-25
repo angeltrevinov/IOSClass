@@ -10,6 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //Labels used in the view
+    @IBOutlet weak var lbYear: UILabel!
+    @IBOutlet weak var lbMonth: UILabel!
+    @IBOutlet weak var lbNumberDay: UILabel!
+    @IBOutlet weak var lbDay: UILabel!
+    
+    var dateTodaysDate: Date!
+    
+    //-----------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
