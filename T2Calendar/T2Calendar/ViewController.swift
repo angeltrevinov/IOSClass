@@ -16,12 +16,46 @@ class ViewController: UIViewController {
     @IBOutlet weak var lbNumberDay: UILabel!
     @IBOutlet weak var lbDay: UILabel!
     
-    var dateTodaysDate: Date!
+    //The date and a date formatter
+    var dateWeAre: Date = Date();
+    var format: DateFormatter = DateFormatter();
     
-    //-----------------------------------------------------------------
+    //-------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        _dateStrToLabels();
+    }
+    
+    //-------------------------------------------------------------------
+    @IBAction func changeDate(_
+        //Function than changes the date depending on the gesture
+        //      you neewd two gesture recognizers for each direction
+        sender: UISwipeGestureRecognizer
+        ) {
+        if (sender.direction == .left) {
+            print("left swipe made")
+            dateWeAre = dateWeAre.addingTimeInterval(86400);
+            _dateStrToLabels();
+        } else if sender.direction == .right {
+            print("right swipe made")
+            dateWeAre = dateWeAre.addingTimeInterval(-86400);
+            _dateStrToLabels();
+        }
+    }
+    
+    //------------------------------------------------------------------
+    func _dateStrToLabels(
+        //Method that helps us put the date in our labels
+        ) {
+        format.dateFormat = "yyyy";
+        lbYear.text = format.string(from: dateWeAre);
+        format.dateFormat = "MMMM";
+        lbMonth.text = format.string(from: dateWeAre);
+        format.dateFormat = "dd";
+        lbNumberDay.text = format.string(from: dateWeAre);
+        format.dateFormat = "EEEE";
+        lbDay.text = format.string(from: dateWeAre);
     }
 
 
