@@ -43,12 +43,32 @@ class ViewControllerPrisma: UIViewController {
     }
     
     @IBAction func btCancelar(_ sender: UIButton) {
+        imgToSend = imgPrisma.image;
     }
     
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        var strLargo = "";
+        var strAncho = "";
+        var strAltura = "";
+        var strVolumen = "";
+        
+        if(dLargo != 0 && dAncho != 0 && dAltura != 0 && dVolumen != 0) {
+            strLargo = "Largo: " + "\(dLargo)";
+            strAncho = "Ancho: " + "\(dAncho)";
+            strAltura = "Altura: " + "\(dAltura)";
+            
+            strVolumen = "Volumen: " + "\(dVolumen)";
+        }
+        
+        let vistaHome = segue.destination as! ViewController;
+        vistaHome.lbFHome.text = strLargo + " " + strAncho +  " " + strAltura;
+        vistaHome.lbFHome.numberOfLines = 3;
+        vistaHome.lbFHome.lineBreakMode = .byTruncatingHead
+        vistaHome.lbSHome.text = strVolumen;
+        vistaHome.imgFigureHome.image = imgToSend;
     }
 
 }
