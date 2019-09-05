@@ -31,7 +31,10 @@ class ViewControllerColor: UIViewController {
     
     // MARK: - Navigation
     //---------------------------------------------------------
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(
+        //Prepare to return data 
+        for segue: UIStoryboardSegue, sender: Any?
+        ) {
         
         let viewHome = segue.destination as! ViewController
         viewHome.colorToSet = color!

@@ -12,9 +12,11 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var imgToDisplay: UIImageView!
     @IBOutlet var viewHomeScreen: UIView!
+    @IBOutlet weak var lbMessageToDisplay: UILabel!
     
     var imgImageRecieve: UIImage!
     var colorToSet: UIColor!
+    var strMessageRecieved: String!
     
     
     override func viewDidLoad() {
@@ -36,6 +38,12 @@ class ViewController: UIViewController {
         unwindSegue: UIStoryboardSegue
         ) {
         viewHomeScreen.backgroundColor = colorToSet!
+    }
+    
+    //------------------------------------------------------------
+    @IBAction func unwindMessage(unwindSegue: UIStoryboardSegue) {
+        lbMessageToDisplay.text = strMessageRecieved
+        
     }
 
 
