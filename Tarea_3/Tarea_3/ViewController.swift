@@ -10,9 +10,31 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var imgToDisplay: UIImageView!
+    @IBOutlet var viewHomeScreen: UIView!
+    
+    var imgImageRecieve: UIImage!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    //----------------------------------------------------------
+    @IBAction func unwindImg(
+        //Method to do actions if we came back from immage
+        unwindSegue: UIStoryboardSegue
+        ) {
+        imgToDisplay.image = imgImageRecieve
+    }
+    
+    //-----------------------------------------------------------
+    @IBAction func unwindColor(
+        //Method to do actions if we came back from colors
+        unwindSegue: UIStoryboardSegue
+        ) {
+        
     }
 
 
