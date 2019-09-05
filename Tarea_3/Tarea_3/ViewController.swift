@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet var viewHomeScreen: UIView!
     
     var imgImageRecieve: UIImage!
+    var colorToSet: UIColor!
     
     
     override func viewDidLoad() {
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
         //Method to do actions if we came back from colors
         unwindSegue: UIStoryboardSegue
         ) {
-        
+        viewHomeScreen.backgroundColor = colorToSet!
     }
 
 

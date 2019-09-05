@@ -18,13 +18,19 @@ class ViewControllerImages: UIViewController {
     }
 
     //----------------------------------------------------------------
-    @IBAction func imgToSend(_ sender: UIButton) {
+    @IBAction func imgToSend(
+        //Method to store the image selected
+        _ sender: UIButton
+        ) {
         imgToSend = sender.image(for: .normal)!
     }
     
     // MARK: - Navigation
     //----------------------------------------------------------------
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(
+        //Method method that prepares the data to be sent back
+        for segue: UIStoryboardSegue, sender: Any?
+        ) {
         
         let viewHome = segue.destination as! ViewController
         viewHome.imgImageRecieve = imgToSend;
