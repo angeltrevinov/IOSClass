@@ -8,78 +8,34 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, administraCategorias {
     
     var listaCategorias = [Categoria]()
     var posiblesColores = [UIColor.blue, UIColor.green, UIColor.purple, UIColor.red, UIColor.yellow, UIColor.systemPink, UIColor.cyan]
     
+    //-------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
     //-----------------------------------------------------------------
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    //--------------------------------------------------------------------
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return listaCategorias.count
     }
-
-    /*
+    //-------------------------------------------------------------------------
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
 
-        // Configure the cell...
+        cell.textLabel?.text = listaCategorias[indexPath.row].strTitulo
+        cell.backgroundColor = listaCategorias[indexPath.row].uiColor.withAlphaComponent(0.75)
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
     //-----------------------------------------------------------------------
@@ -88,6 +44,33 @@ class TableViewController: UITableViewController {
         let vistaCategoria = segue.destination as! ViewController
         vistaCategoria.posiblesColores = posiblesColores
         
+        if(segue.identifier == "detail") {
+            let indexPath = tableView.indexPathForSelectedRow!
+            vistaCategoria.categoria = listaCategorias[indexPath.row]
+        }
+        
+        vistaCategoria.delegado = self
+    }
+    
+    // MARK: - Protocol Methods
+    //------------------------------------------------------------------------
+    func agregarCategoria(categoria: Categoria) {
+        listaCategorias.append(categoria)
+        if let position = posiblesColores.firstIndex(of: categoria.uiColor) {
+            posiblesColores.remove(at: position)
+            tableView.reloadData()
+        }
+    }
+    
+    //------------------------------------------------------------------------
+    func editarCategoria(nuevoColor: UIColor, viejoColor: UIColor) {
+        
+        if let position = posiblesColores.firstIndex(of: nuevoColor) {
+            posiblesColores.remove(at: position)
+            posiblesColores.append(viejoColor)
+        }
+        
+        tableView.reloadData()
     }
 
 }

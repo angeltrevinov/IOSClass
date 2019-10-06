@@ -12,7 +12,7 @@ import UIKit
 //===============================================================
 protocol administraCategorias {
     func agregarCategoria(categoria: Categoria) -> Void
-    func editarCategoria(nuevoColor: UIColor) -> Void
+    func editarCategoria(nuevoColor: UIColor, viejoColor: UIColor) -> Void
 }
 
 //MARK: - Class
@@ -21,11 +21,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tfNombreCategoria: UITextField!
     
+    var delegado: administraCategorias!
     var posiblesColores = [UIColor]()
-    var strNombreCategoria: String!
+    var categoria: Categoria!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(categoria != nil) {
+            tfNombreCategoria.text = categoria.strTitulo
+            tfNombreCategoria.isUserInteractionEnabled = false;
+        } else {
+            tfNombreCategoria.isUserInteractionEnabled = true;
+        }
         
     }
     
@@ -35,13 +43,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return posiblesColores.count
     }
     
+    //------------------------------------------------------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellColors")!
-        
         cell.backgroundColor = posiblesColores[indexPath.row].withAlphaComponent(0.75)
-        
         return cell;
+    }
+    
+    //--------------------------------------------------------------
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tfNombreCategoria.text != "" {
+
+            let uiColor = posiblesColores[indexPath.row]
+            
+            if(tfNombreCategoria.isUserInteractionEnabled) {
+                
+                let nuevaCategoria = Categoria(strTitulo: tfNombreCategoria.text!, uiColor: uiColor)
+                delegado.agregarCategoria(categoria: nuevaCategoria)
+            } else {
+                delegado.editarCategoria(nuevoColor: uiColor, viejoColor: categoria.uiColor)
+                categoria.uiColor = uiColor
+            }
+            
+            navigationController?.popToRootViewController(animated: true)
+ 
+        }
+        
     }
 
 }
