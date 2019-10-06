@@ -24,15 +24,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var delegado: administraCategorias!
     var posiblesColores = [UIColor]()
     var categoria: Categoria!
+    var agregarColor: UIColor!
+    
+    @IBOutlet weak var tbTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if(categoria != nil) {
+            self.title = "Editar " + categoria.strTitulo
             tfNombreCategoria.text = categoria.strTitulo
-            tfNombreCategoria.isUserInteractionEnabled = false;
+            tfNombreCategoria.isEnabled = false;
         } else {
-            tfNombreCategoria.isUserInteractionEnabled = true;
+            self.title = "Nueva Categoria"
+            tfNombreCategoria.isEnabled = true;
         }
         
     }
@@ -47,7 +52,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellColors")!
-        cell.backgroundColor = posiblesColores[indexPath.row].withAlphaComponent(0.75)
+        cell.backgroundColor = posiblesColores[indexPath.row].withAlphaComponent(0.50)
         return cell;
     }
     
@@ -58,7 +63,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
             let uiColor = posiblesColores[indexPath.row]
             
-            if(tfNombreCategoria.isUserInteractionEnabled) {
+            if(tfNombreCategoria.isEnabled) {
                 
                 let nuevaCategoria = Categoria(strTitulo: tfNombreCategoria.text!, uiColor: uiColor)
                 delegado.agregarCategoria(categoria: nuevaCategoria)
@@ -72,6 +77,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
     }
-
+    
+    //MARK: - Navigation Methods
+    @IBAction func unwindColor(unwindSegue: UIStoryboardSegue) {
+        posiblesColores.append(agregarColor)
+        tbTable.reloadData()
+    }
 }
 

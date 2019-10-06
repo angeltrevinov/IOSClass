@@ -32,7 +32,7 @@ class TableViewController: UITableViewController, administraCategorias {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
 
         cell.textLabel?.text = listaCategorias[indexPath.row].strTitulo
-        cell.backgroundColor = listaCategorias[indexPath.row].uiColor.withAlphaComponent(0.75)
+        cell.backgroundColor = listaCategorias[indexPath.row].uiColor.withAlphaComponent(0.50)
 
         return cell
     }

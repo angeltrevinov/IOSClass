@@ -15,6 +15,7 @@
 		0B9F392623495A520005DE66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B9F392423495A520005DE66 /* LaunchScreen.storyboard */; };
 		0B9F392E23495B280005DE66 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F392D23495B280005DE66 /* TableViewController.swift */; };
 		0B9F3930234961140005DE66 /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F392F234961140005DE66 /* Categoria.swift */; };
+		0B9F3932234997AC0005DE66 /* ViewControllerColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F3931234997AC0005DE66 /* ViewControllerColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		0B9F392723495A520005DE66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B9F392D23495B280005DE66 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		0B9F392F234961140005DE66 /* Categoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
+		0B9F3931234997AC0005DE66 /* ViewControllerColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				0B9F391B23495A510005DE66 /* SceneDelegate.swift */,
 				0B9F391D23495A510005DE66 /* ViewController.swift */,
 				0B9F391F23495A510005DE66 /* Main.storyboard */,
+				0B9F3931234997AC0005DE66 /* ViewControllerColor.swift */,
 				0B9F392F234961140005DE66 /* Categoria.swift */,
 				0B9F392D23495B280005DE66 /* TableViewController.swift */,
 				0B9F392223495A520005DE66 /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 				0B9F391A23495A510005DE66 /* AppDelegate.swift in Sources */,
 				0B9F391C23495A510005DE66 /* SceneDelegate.swift in Sources */,
 				0B9F392E23495B280005DE66 /* TableViewController.swift in Sources */,
+				0B9F3932234997AC0005DE66 /* ViewControllerColor.swift in Sources */,
 				0B9F3930234961140005DE66 /* Categoria.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
