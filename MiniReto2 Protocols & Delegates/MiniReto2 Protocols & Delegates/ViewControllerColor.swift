@@ -28,19 +28,16 @@ class ViewControllerColor: UIViewController {
     @IBAction func dataChange(_ sender: UITextField) {
         btnColor.isEnabled = true;
         
-        if  let Red = Int(tfRed.text!),
+        if  let Red = Int(tfRed.text!) ,
             let Green = Int(tfGreen.text!),
             let Blue = Int(tfBlue.text!) {
             
-            //Idk why it doesnt change to other colors different
-            //      from the system, even though the data is read
-            //      right.
             print(Red, Green, Blue)
         
             self.viewColor.backgroundColor =  UIColor(
-                           red: CGFloat(Red),
-                           green: CGFloat(Green),
-                           blue: CGFloat(Blue),
+                           red: CGFloat(Red) / 255,
+                           green: CGFloat(Green) / 255,
+                           blue: CGFloat(Blue) / 255,
                            alpha:  CGFloat(1.0)
                        )
             
