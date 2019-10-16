@@ -15,6 +15,8 @@ class ViewController:
     
     @IBOutlet weak var picker: UIPickerView!
     
+    @IBOutlet weak var viewWin: UIView!
+    
     var listaImagenes: [UIImage] = [
             UIImage(named: "Apple")!,
             UIImage(named: "bar")!,
@@ -27,17 +29,21 @@ class ViewController:
     //------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewWin.isHidden = true;
        
     }
     
     //------------------------------------------------------
     @IBAction func onRoll(_ sender: UIButton) {
-        for index in 0...2 {
-            picker.selectRow(
-                Int.random(in: 0..<listaImagenes.count),
-                inComponent: index,
-                animated: true
-            )
+        
+        if(viewWin.isHidden) {
+            for index in 0...2 {
+                picker.selectRow(
+                    Int.random(in: 0..<listaImagenes.count),
+                    inComponent: index,
+                    animated: true
+                )
+            }
         }
         
         let firstComponent: Int =
@@ -51,9 +57,7 @@ class ViewController:
             firstComponent == secondComponent &&
             secondComponent == thirdComponent
             ){
-            print(true)
-        } else {
-            print(false)
+            viewWin.isHidden = false;
         }
     }
     
@@ -67,6 +71,7 @@ class ViewController:
                 animated: true
             )
         }
+        viewWin.isHidden = true;
     }
     
     //MARK: - PickerView Methods
